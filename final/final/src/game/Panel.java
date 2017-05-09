@@ -7,6 +7,7 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import gameClasses.Cloud;
 import gameClasses.Obstacle;
 import gameClasses.Player;
 
@@ -15,6 +16,7 @@ public class Panel extends JPanel
 	private static final long serialVersionUID = 1L;
 	private Player player = new Player(60);
 	private Obstacle obs = new Obstacle(100);
+	private Cloud cloud = new Cloud(100);
 	
 	public Player getPlayer() 
 	{
@@ -42,6 +44,7 @@ public class Panel extends JPanel
 		super.paintComponent(g);
 		g.setColor(Color.GREEN);
 		g.fillRect(0, 420, 800, 400);
+		cloud.drawCloud(g);
 		obs.drawObstacle(g);
 		player.drawChar(g);
 		gameOver(g);
@@ -55,5 +58,15 @@ public class Panel extends JPanel
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 100));
 			g.drawString(new String("Game Over"), 300, 400);
 		}
+	}
+
+	public Cloud getCloud() 
+	{
+		return cloud;
+	}
+
+	public void setCloud(Cloud cloud) 
+	{
+		this.cloud = cloud;
 	}
 }

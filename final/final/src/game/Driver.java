@@ -23,9 +23,11 @@ public class Driver
 		while(running)
 		{
 			game.panel.setBackground(c);
+			cycle();
 			game.repaint();
 			game.panel.repaint();
 			game.panel.getObs().move();
+			game.panel.getCloud().move();
 			game.panel.getPlayer().fall();
 			//wait---
 			try{Thread.sleep(50);}catch(Exception e){}
@@ -42,5 +44,18 @@ public class Driver
 			}
 			System.out.println(score);
 		}
+	}
+	
+	public static void cycle()
+	{
+		if(score > 300 && score < 500)
+		{
+			c = c.darker();
+		}
+		if(score > 500 && score < 700)
+		{
+			c = c.brighter();
+		}
+			
 	}
 }
